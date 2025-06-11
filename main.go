@@ -10,29 +10,26 @@ import (
 )
 
 func main() {
+	// Connect to DB
 	config.Connect()
 
 	// Create patients table if not exists
-	_, err := config.DB.Exec(`
-		CREATE TABLE IF NOT EXISTS patients (
-			id SERIAL PRIMARY KEY,
-			name TEXT,
-			age INT,
-			disease TEXT
-		);
-	`)
+	_, err := config.DB.Exec(`CREATE TABLE IF NOT EXISTS patients (
+		id SERIAL PRIMARY KEY,
+		name TEXT,
+		age INT,
+		disease TEXT
+	);`)
 	if err != nil {
 		log.Fatal("Error creating patients table:", err)
 	}
 
 	// Create users table if not exists
-	_, err = config.DB.Exec(`
-		CREATE TABLE IF NOT EXISTS users (
-			email TEXT PRIMARY KEY,
-			password TEXT NOT NULL,
-			role TEXT NOT NULL
-		);
-	`)
+	_, err = config.DB.Exec(`CREATE TABLE IF NOT EXISTS users (
+		email TEXT PRIMARY KEY,
+		password TEXT NOT NULL,
+		role TEXT NOT NULL
+	);`)
 	if err != nil {
 		log.Fatal("Error creating users table:", err)
 	}
@@ -40,13 +37,15 @@ func main() {
 	// Register API routes
 	r := routes.RegisterRoutes()
 
-	// Serve static frontend from ./public
+	// Serve static frontend files (React, HTML, JS, etc.)
 	fs := http.FileServer(http.Dir("./public"))
-	r.PathPrefix("/").Handler(fs) // for index.html, CSS, JS, etc.
+	r.PathPrefix("/").Handler(fs)
 
-	// Wrap everything with CORS middleware
+	// Apply CORS middleware
 	handler := middleware.CORSMiddleware(r)
 
-	fmt.Println("Server running at http://localhost:8000")
-	log.Fatal(http.ListenAndServe(":8000", handler))
+	// Start server
+	port := ":8000"
+	fmt.Printf("✅ Server running on http://localhost%s\n", port)
+	log.Fatal(http.ListenAndServe(port, handler))
 }
