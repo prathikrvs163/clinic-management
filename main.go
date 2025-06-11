@@ -12,7 +12,7 @@ import (
 func main() {
 	config.Connect()
 
-	// Optional: Create patients table
+	// Create patients table if not exists
 	_, err := config.DB.Exec(`
 		CREATE TABLE IF NOT EXISTS patients (
 			id SERIAL PRIMARY KEY,
@@ -25,7 +25,7 @@ func main() {
 		log.Fatal("Error creating patients table:", err)
 	}
 
-	// Optional: Create users table
+	// Create users table if not exists
 	_, err = config.DB.Exec(`
 		CREATE TABLE IF NOT EXISTS users (
 			email TEXT PRIMARY KEY,
@@ -37,9 +37,14 @@ func main() {
 		log.Fatal("Error creating users table:", err)
 	}
 
+	// Register API routes
 	r := routes.RegisterRoutes()
 
-	// Wrap routes with CORS middleware
+	// Serve static frontend from ./public
+	fs := http.FileServer(http.Dir("./public"))
+	r.PathPrefix("/").Handler(fs) // for index.html, CSS, JS, etc.
+
+	// Wrap everything with CORS middleware
 	handler := middleware.CORSMiddleware(r)
 
 	fmt.Println("Server running at http://localhost:8000")
