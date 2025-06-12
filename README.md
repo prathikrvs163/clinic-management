@@ -2,7 +2,7 @@
 
 A full-stack web application built with **Golang**, **PostgreSQL**, and **vanilla HTML/CSS/JavaScript** to manage clinic operations. It supports two user roles — **Receptionist** and **Doctor** — with secure login and full CRUD functionality for managing patient records. Deployed on **Render** (backend + frontend + PostgreSQL).
 
-🌐 **[Live Demo](https://your-service-name.onrender.com)**
+🌐 **[Live Demo](https://clinic-management-3fus.onrender.com/)**
 
 ---
 
@@ -66,7 +66,7 @@ clinic-management/
 2. **Create `.env` file**
    ```env
    DB_HOST=127.0.0.1
-   DB_PORT=5432
+   DB_PORT=5433
    DB_USER=postgres
    DB_PASSWORD=your_password
    DB_NAME=clinic
@@ -148,7 +148,7 @@ You can register new users using Postman or curl:
 
 ## 👨‍💻 Author
 
-**Sri Ram Prathik**
+**Sriram Prathik**
 - [LinkedIn](https://linkedin.com/in/your-profile)
 - [GitHub](https://github.com/prathikrvs163)
 
@@ -156,6 +156,6 @@ You can register new users using Postman or curl:
 
 ## 📄 API Documentation
 
-🔗 [Postman Collection](https://your-postman-collection-link) (Add link if exported)
+🔗 [Postman Collection](https://prathik-8229284.postman.co/workspace/Prathik's-Workspace~44924073-f5d1-4886-83b8-27b6eb0cd47b/collection/45415263-8ee02dbb-ad5d-45d5-b15c-b548428df011?action=share&creator=45415263)
 
 
