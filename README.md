@@ -149,7 +149,7 @@ You can register new users using Postman or curl:
 ## 👨‍💻 Author
 
 **Sriram Prathik**
-- [LinkedIn](https://linkedin.com/in/your-profile)
+- [LinkedIn](https://www.linkedin.com/in/sriram-prathik-rachakonda-26654a143/)
 - [GitHub](https://github.com/prathikrvs163)
 
 ---
